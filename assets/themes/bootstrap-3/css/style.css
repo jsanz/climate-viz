@@ -77,3 +77,17 @@ h1, h2, h3, h4 {
   background: #57A957;
   border: 1px solid #4c964d;
   color: #FFF; }
+
+
+.figure{
+  text-align: center;
+  margin: 20px auto;
+}
+.figure img{
+  width: 80%;
+}
+.figure .caption{
+  font-size: smaller;
+  font-style: italic;
+  margin: 10px 0 0 0;
+}
