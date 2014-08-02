@@ -2,7 +2,7 @@
 layout: post
 title: "First map on the web site and interactions"
 description: ""
-tags: []
+tags: [design, data]
 date: 2014-08-03 01:09
 ---
 {% include JB/setup %}
