@@ -5,6 +5,8 @@ permalink: /log/:year/:month/:day/:title
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md","data"]
 pygments: true
 
+safe: true
+
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
@@ -98,9 +100,9 @@ JB :
   # Set 'provider' to false to turn analytics off globally.
   #
   analytics :
-    provider : false
+    provider : google
     google :
-        tracking_id : 'UA-123-12'
+        tracking_id : 'UA-35543718-3'
     getclicky :
       site_id :
     mixpanel :
@@ -108,6 +110,9 @@ JB :
     piwik :
         baseURL : 'myserver.tld/piwik' # Piwik installation address (without protocol)
         idsite : '1'                   # the id of the site on Piwik
+
+
+
 
   # Settings for sharing helper.
   # Sharing is for things like tweet, plusone, like, reddit buttons etc.
