@@ -44,6 +44,7 @@ So the schema for this data is rather simple:
 	                                                 |                      |
 	                                                 +----------------------+
 
+
 For all the data measures there is an accompanying flag that specifies different things like the number of measures during the day, the type of measurement and so on.
 
 As for now, I think the first step is to watch the distribution of the stations with data. After loading the station database into an structured data, I'll filter this with the stations that actually have data for 2008.
