@@ -84,11 +84,16 @@
   text-align: center;
   margin: 20px auto;
 }
-.figure img{
-  width: 80%;
-}
 .figure .caption{
   font-size: smaller;
   font-style: italic;
   margin: 10px 0 0 0;
+}
+
+.frontpage .container-fluid,
+.frontpage .container-fluid .row,
+.frontpage .container-fluid .row.frontpage, .col-xs-12,
+.frontpage .navbar{
+  margin: 0;
+  padding: 0;
 }
