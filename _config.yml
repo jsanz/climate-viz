@@ -1,8 +1,8 @@
 # This is the default format.
 # For more see: http://jekyllrb.com/docs/permalinks/
-permalink: /:categories/:year/:month/:day/:title
+permalink: /log/:year/:month/:day/:title
 
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md","data"]
 pygments: true
 
 # Themes are encouraged to use these universal variables
@@ -12,6 +12,7 @@ title : Climate Visualization
 tagline: Big Data visualization
 author :
   name : Jorge Sanz
+  web: http://jorgesanz.net
   email : xurxosanz@gmail.com
   github : jsanz
   twitter : xurxosanz
@@ -97,7 +98,8 @@ JB :
   # Set 'provider' to false to turn analytics off globally.
   #
   analytics :
-    provider : false google :
+    provider : false
+    google :
         tracking_id : 'UA-123-12'
     getclicky :
       site_id :
