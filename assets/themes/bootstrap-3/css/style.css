@@ -97,3 +97,7 @@
   margin: 0;
   padding: 0;
 }
+
+#details .table{
+  margin:10px 20px;
+}
