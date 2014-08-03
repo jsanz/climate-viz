@@ -21,7 +21,9 @@
     <!-- frontpage external css -->
     {% if page.frontpage %}
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/dc/1.7.1/dc.css" />
+    <!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/dc/1.7.1/dc.css" />-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/chardin.js/0.1.2/chardinjs.css" />
+
     {% endif %}
 
     <!-- Custom styles -->
@@ -69,12 +71,18 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="jb-navbar-collapse">
-          <ul class="nav navbar-nav">
+          <ul id="pages" class="nav navbar-nav">
             <li><a href="/log/">Log</a></li>
             <li><a href="/about.html">About</a></li>
             <li><a href="/tags.html">Tags</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            {% if page.frontpage %}
+            <li><a id="showHelp"
+              style="display:none;"
+              href="javascript:void(0)"
+              onclick="showHelp();">help?</a></li>
+            {% endif %}
             <li><a href="{{ BASE_PATH }}{{ site.JB.atom_path }}">atom</a></li>
             <li><a href="{{ BASE_PATH }}{{ site.JB.rss_path }}">rss</a></li>
           </ul>
@@ -113,12 +121,16 @@
 
     {% if page.frontpage %}
     <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.7/crossfilter.min.js" charset="utf-8"></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.7/crossfilter.min.js" charset="utf-8"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/dc/1.7.1/dc.js" charset="utf-8"></script>-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js" charset="utf-8"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/dc/1.7.1/dc.min.js" charset="utf-8"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/chardin.js/0.1.2/chardinjs.js" charset="utf-8"></script>
+
+
+
+
     <script src="/scripts/main.js" charset="utf-8"></script>
     {% endif %}
-
 
     {% if page.highlight %}
     <script>hljs.initHighlightingOnLoad();</script>
