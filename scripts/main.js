@@ -1,6 +1,8 @@
 
 var toC = function(f){return (f-32)*5/9};
-var rows;
+var ROWS, MAP, VIS, LAYERG;
+
+
 
 var showHelp = function(){
   $('.cartodb-layer-selector-box')
@@ -67,8 +69,8 @@ var loadDCGraph = function(data){
 var loadD3Table = function(data){
   d3.select('#details .data').select('table').remove();
 
-  //d3.select('#details .data h4')
-  //  .text(capitalize(data[0].name));
+  d3.select('#details .data h4')
+    .text(capitalize(data[0].name));
 
   // Draw the table
   d3.select('#details .data')
@@ -114,8 +116,8 @@ var loadD3Graph = function(data){
 
   /* Graph for the year */
   var margin = {top: 30, right: 50, bottom: 30, left: 50},
-      width = 600 - margin.left - margin.right,
-      height = 270 - margin.top - margin.bottom;
+      width = 400 - margin.left - margin.right,
+      height = 200 - margin.top - margin.bottom;
 
 
   var x = d3.time.scale().range([0, width]);
@@ -225,6 +227,8 @@ function main() {
 
     // layer 0 is the base layer, layer 1 is cartodb layer
     // setInteraction is disabled by default
+    LAYERG = layers[1];
+
     layers[1].setInteraction(true);
     layers[1].on('featureOver', function(e, pos, latlng, data) {
       //cartodb.log.log( data);
@@ -277,6 +281,8 @@ function main() {
 
     $('#showHelp').show();
 
+    MAP = map;
+    VIS = vis;
   })
   .error(function(err) {
     console.log(err);
