@@ -12,13 +12,13 @@ var width = $(".graph").width() - margin.left - margin.right,
 
 var showHelp = function(){
   $('.cartodb-layer-selector-box')
-    .attr('data-intro','Use the layer selector to switch on and of available layers')
+    .attr('data-intro','Use the layer selector to switch on and off available layers')
     .attr('data-position','left');
   $('.cartodb-zoom')
-    .attr('data-intro','Navigate over the cartography using your mouse wheel or these buttons')
+    .attr('data-intro','Navigate using your mouse and these buttons')
     .attr('data-position','right');
   $('.cartodb-searchbox')
-    .attr('data-intro','Search for places (using Nokia geocoding)')
+    .attr('data-intro','Look for places (using Nokia geocoding)')
     .attr('data-position','bottom');
 
   $('body').chardinJs('start');
