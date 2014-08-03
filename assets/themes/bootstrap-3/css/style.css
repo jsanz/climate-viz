@@ -109,6 +109,15 @@
   padding:10px 20px;
 }
 
+#details table.table td,
+#details table.table th{
+ text-align: right;
+ max-width: 50px;
+}
+
+#details table.table tr.odd{
+  background:#525252;
+}
 
 /* edges */
 .graph .axis path,

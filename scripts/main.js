@@ -1,8 +1,14 @@
 
 var toC = function(f){return (f-32)*5/9};
 var ROWS, MAP, VIS, LAYERG;
+var monthFormat = d3.time.format("%B");
 
+/* Graph for the year */
+var margin = {top: 30, right: 50, bottom: 30, left: 50};
 
+var width = $(".graph").width() - margin.left - margin.right,
+    aspect = 1/2,
+    height = (width * aspect) - margin.top - margin.bottom;
 
 var showHelp = function(){
   $('.cartodb-layer-selector-box')
@@ -81,44 +87,53 @@ var loadD3Table = function(data){
         .text('Month');
   d3.select('#details table tr')
       .append('th')
-        .text('Max');
+        .attr("style","color:#ef8a62")
+        .text('Max (C)');
   d3.select('#details table tr')
       .append('th')
-        .text('Avg');
+        .attr("style","color:#f7f7f7")
+        .text('Avg (C)');
   d3.select('#details table tr')
       .append('th')
-        .text('Min');
+        .attr("style","color:#67a9cf")
+        .text('Min (C)');
   d3.select('#details table tr')
       .append('th')
-        .text('Rainy days');
+        .text('Rain (count)');
+  d3.select('#details table tr')
+      .append('th')
+        .text('Tornados (count)');
+  d3.select('#details table tr')
+      .append('th')
+        .text('Thunders (count)');
   tr = d3.select('#details table')
     .selectAll('tr.tablerow')
     .data(data)
     .enter()
     .append('tr')
-    .attr("class","tablerow");
+    .attr("class",function(d,i){
+        return "tablerow " + ( i%2==0 ? "odd" : "even");
+    });
 
   tr.append('td')
-        .text(function(d){return d.obs_month;})
+        .text(function(d){return monthFormat(new Date(2008,d.obs_month,1));});
   tr.append('td')
-        .text(function(d){return d.max_tmp.toFixed(2);})
+        .text(function(d){return d.max_tmp.toFixed(1);});
   tr.append('td')
-        .text(function(d){return d.tmp.toFixed(2);})
+        .text(function(d){return d.tmp.toFixed(1);});
   tr.append('td')
-        .text(function(d){return d.min_tmp.toFixed(2);})
+        .text(function(d){return d.min_tmp.toFixed(1);});
   tr.append('td')
-        .text(function(d){return d.rain_count;})
+        .text(function(d){return d.rain_count;});
+  tr.append('td')
+        .text(function(d){return d.tornado_co;});
+  tr.append('td')
+        .text(function(d){return d.thunder_co;});
 };
 
 
 var loadD3Graph = function(data){
   d3.select('#details .graph').select('svg').remove();
-
-  /* Graph for the year */
-  var margin = {top: 30, right: 50, bottom: 30, left: 50},
-      width = 400 - margin.left - margin.right,
-      height = 200 - margin.top - margin.bottom;
-
 
   var x = d3.time.scale().range([0, width]);
   var y = d3.scale.linear().range([height, 0]);
@@ -153,8 +168,8 @@ var loadD3Graph = function(data){
   // Scale the range of the data
   x.domain(d3.extent(data, function(d) { return d.date; }));
   y.domain([
-    d3.min(data,function(d){return d3.min([d.max_tmp,d.tmp,d.min_tmp])}),
-    d3.max(data,function(d){return d3.max([d.max_tmp,d.tmp,d.min_tmp])})
+    d3.min(data,function(d){return d3.min([d.max_tmp,d.tmp,d.min_tmp])}) -2,
+    d3.max(data,function(d){return d3.max([d.max_tmp,d.tmp,d.min_tmp])}) +2
     ]);
   yRain.domain([0,d3.max(data,function(d){return d.rain_count;})]);
 
@@ -174,9 +189,6 @@ var loadD3Graph = function(data){
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis);
 
-
-
-
   svg.append("path")
     .attr("class", "line min_tmp")
     .attr("d", valueline
@@ -188,7 +200,6 @@ var loadD3Graph = function(data){
     .attr("d", valueline
         .interpolate("basis")
         .y(function(d) { return y(d.tmp); })(data));
-
 
   svg.append("path")
     .attr("class", "line max_tmp")
@@ -205,6 +216,22 @@ var loadD3Graph = function(data){
     .attr("transform", "translate(" + width + ",0)")
     .call(yAxisRain);
 
+  /* Labels */
+  svg.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x",0 - (height / 2))
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Temperature (Cº)");
+
+  svg.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 + width + margin.right / 2)
+    .attr("x",0 - (height / 2))
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Number of rainy days");
 }
 
 function main() {
@@ -242,7 +269,8 @@ function main() {
         "with stations as ( select station_id id, name from stations where cartodb_id = "
           + data.cartodb_id
           +" ) select stations.name, "
-          + "o.obs_month, o.max_tmp, o.min_tmp, o.tmp, o.rain_count, o.tornado_co "
+          + "o.obs_month, o.max_tmp, o.min_tmp, o.tmp, o.rain_count, o.tornado_co, "
+          + "o.thunder_co "
           + "from observations o, stations where station_id=stations.id order by o.obs_month")
         .done(function(data) {
             var parseDate = d3.time.format("%m/%Y").parse;
@@ -283,6 +311,13 @@ function main() {
 
     MAP = map;
     VIS = vis;
+
+    $(window).resize(function() {
+      var width = $(".graph").width();
+      var svg  = $(".graph svg")
+      svg.attr("width", width);
+      svg.attr("height", width * aspect);
+    });
   })
   .error(function(err) {
     console.log(err);
