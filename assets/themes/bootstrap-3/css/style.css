@@ -90,6 +90,8 @@
   margin: 10px 0 0 0;
 }
 
+
+/* front page css*/
 .frontpage .container-fluid,
 .frontpage .container-fluid .row,
 .frontpage .container-fluid .row.frontpage, .col-xs-12,
@@ -100,4 +102,9 @@
 
 #details .table{
   margin:10px 20px;
+}
+
+#map{
+  max-width: 100%;
+  height: 300px;
 }

@@ -4,6 +4,7 @@ title: "Filling the database with observation data"
 description: ""
 tags: data
 date: 2014-08-02 16:45
+highlight: yes
 ---
 {% include JB/setup %}
 
@@ -66,6 +67,3 @@ To summarize I want:
 
 - Stations and monthly aggregated data on CartoDB for dinamic queries and map visualizations.
 - Raw observations on a web server for station details, out of the map.
-
-
-<script>hljs.initHighlightingOnLoad();</script>

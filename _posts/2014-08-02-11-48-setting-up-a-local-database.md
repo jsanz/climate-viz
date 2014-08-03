@@ -4,6 +4,7 @@ title: "Setting up a local database"
 description: ""
 tags: data
 date: 2014-08-02 11:48
+highlight: yes
 ---
 {% include JB/setup %}
 
@@ -39,6 +40,3 @@ Or count the number of stations by region on a given country:
 	order by c desc;
 
 I've also set up a class in Python that parses a line of the observation data, so as for now, I'm ready to create the observation table and parse all the observations to have everything on my database.
-
-
-<script>hljs.initHighlightingOnLoad();</script>
