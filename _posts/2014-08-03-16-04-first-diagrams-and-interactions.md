@@ -2,7 +2,7 @@
 layout: post
 title: "First diagrams and interactions"
 description: ""
-tags: web,design
+tags: [web,design]
 date: 2014-08-03 16:04
 ---
 {% include JB/setup %}

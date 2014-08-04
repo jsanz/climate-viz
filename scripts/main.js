@@ -257,6 +257,23 @@ function main() {
     LAYERG = layers[1];
 
     layers[1].setInteraction(true);
+
+    var subLayers = layers[1].getSubLayers();
+    var noFirst = false;
+    subLayers.forEach(function(overlay) {
+      if (noFirst){
+        overlay.hide();
+      } else {
+        noFirst = true;
+      }
+
+    });
+
+    //get the layer selector control
+    var control = vis.getOverlay("layer_selector");
+    //redraw layer selector to update the states
+    control.render();
+
     layers[1].on('featureOver', function(e, pos, latlng, data) {
       //cartodb.log.log( data);
     });
@@ -304,8 +321,7 @@ function main() {
     map = vis.getNativeMap();
 
     // now, perform any operations you need
-    // map.setZoom(3)
-    // map.setCenter(new google.maps.Latlng(...))
+    map.setZoom(2).panTo([30,00]);
 
     $('#showHelp').show();
 
