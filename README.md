@@ -6,5 +6,9 @@
 
 ## TO DO
 
-# Generate time-line on the log page
-#
+- Ideas to put on the next steps
+  
+  - Add a permalink to one station
+  - Generate a separated map of tornados and thunders using torque
+
+- Generate time-line on the log page
