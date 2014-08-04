@@ -11,7 +11,7 @@ var width = $(".graph").width() - margin.left - margin.right,
     height = (width * aspect) - margin.top - margin.bottom;
 
 var showHelp = function(){
-  $('.cartodb-layer-selector-box')
+  $('.layer-selector-buttons')
     .attr('data-intro','Use the layer selector to switch on and off available layers')
     .attr('data-position','left');
   $('.cartodb-zoom')
@@ -244,7 +244,7 @@ function main() {
       center_lat: 0,
       center_lon: 0,
       zoom: 2,
-      layer_selector:true,
+      //layer_selector:true,
       cartodb_logo: true,
       legends: false
 
@@ -256,24 +256,19 @@ function main() {
     // setInteraction is disabled by default
     LAYERG = layers[1];
 
-    layers[1].setInteraction(true);
 
-    var subLayers = layers[1].getSubLayers();
-    var noFirst = false;
-    subLayers.forEach(function(overlay) {
-      if (noFirst){
-        overlay.hide();
-      } else {
-        noFirst = true;
-      }
 
+    $('.layer-selector-buttons .btn').click(function(e){
+      $('.layer-selector-buttons .btn.active').toggleClass('active');
+      var layer = $(this).attr('data-layer');
+      var subs = LAYERG.getSubLayers()
+      subs.forEach(function(l){l.hide();});
+      subs[layer-1].show();
     });
 
-    //get the layer selector control
-    var control = vis.getOverlay("layer_selector");
-    //redraw layer selector to update the states
-    control.render();
+    $('.layer-selector-buttons .btn:first-child').click().addClass('active');
 
+    layers[1].setInteraction(true);
     layers[1].on('featureOver', function(e, pos, latlng, data) {
       //cartodb.log.log( data);
     });

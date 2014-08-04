@@ -2,9 +2,16 @@
 layout: page
 description: "Index page"
 frontpage: yes
+title: 2008 Climate visualization
 ---
 {% include JB/setup %}
 
+<div class="btn-group btn-group-sm layer-selector-buttons">
+  <button type="button" class="btn btn-default" data-layer="1">Max Temp</button>
+  <button type="button" class="btn btn-default" data-layer="2">Min Temp</button>
+  <button type="button" class="btn btn-default" data-layer="3">Range Temp</button>
+  <button type="button" class="btn btn-default" data-layer="4">Rainy Days</button>
+</div>
 <div class="row" id="map"></div>
 
 <div class="row" id="details">

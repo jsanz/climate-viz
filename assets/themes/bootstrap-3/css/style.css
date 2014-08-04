@@ -161,3 +161,25 @@ shape-rendering: crispEdges;
   fill: white;
   font: 15px "Lato";
 }
+
+.layer-selector-buttons {
+  position: absolute;
+  top: 18px;
+  z-index: 1;
+  right: 181px;
+}
+
+div.cartodb-searchbox{
+  background: #464545;
+  border-color: #272727;
+  height: 33px;
+  margin: 17px 14px 0 0;
+}
+div.cartodb-zoom{
+  background: #375a7f;
+  border-color: #999999;
+}
+div.cartodb-zoom a.zoom_in{
+  /* background: #375a7f; */
+  border-color: #999999;
+}
