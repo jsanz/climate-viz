@@ -13,12 +13,24 @@ var width = $(".graph").width() - margin.left - margin.right,
 var showHelp = function(){
   $('.layer-selector-buttons')
     .attr('data-intro','Use the layer selector to switch on and off available layers')
-    .attr('data-position','left');
+    .attr('data-position','bottom');
   $('.cartodb-zoom')
-    .attr('data-intro','Navigate using your mouse and these buttons')
-    .attr('data-position','right');
+    .attr('data-intro','Navigate')
+    .attr('data-position','bottom');
   $('.cartodb-searchbox')
     .attr('data-intro','Look for places (using Nokia geocoding)')
+    .attr('data-position','bottom');
+  $('#details')
+    .attr('data-intro','On this section climate data will appear after clicking a station.')
+    .attr('data-position','top');
+  $('#nav-Thunders')
+    .attr('data-intro','Another visualization')
+    .attr('data-position','bottom');
+  $('#nav-Log')
+    .attr('data-intro','Project log')
+    .attr('data-position','bottom');
+  $('#nav-Log')
+    .attr('data-intro','Project internals')
     .attr('data-position','bottom');
 
   $('body').chardinJs('start');
@@ -326,6 +338,8 @@ function main() {
       svg.attr("width", width);
       svg.attr("height", width * aspect);
     });
+
+    $('.layer-selector-buttons .btn').tooltip({})
   })
   .error(function(err) {
     console.log(err);

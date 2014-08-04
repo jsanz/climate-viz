@@ -101,8 +101,8 @@
 }
 
 #map{
-  max-width: 100%;
-  height: 300px;
+  /* max-width: 100%; */
+  /* height: 300px; */
 }
 
 #details table.table{
@@ -183,4 +183,50 @@ div.cartodb-zoom a.zoom_in{
   /* background: #375a7f; */
   border-color: #999999;
 }
+
+
+path.continent-0{
+  stroke:#1b9e77;
+}
+path.continent-1{
+  stroke:#d95f02;
+}
+path.continent-2{
+  stroke:#7570b3;
+}
+path.continent-3{
+  stroke:#e7298a;
+}
+path.continent-4{
+  stroke:#66a61e;
+}
+path.continent-4{
+  stroke:#e6ab02;
+}
+
+text.continent-0{
+  fill:#1b9e77;
+}
+text.continent-1{
+  fill:#d95f02;
+}
+text.continent-2{
+  fill:#7570b3;
+}
+text.continent-3{
+  fill:#e7298a;
+}
+text.continent-4{
+  fill:#66a61e;
+}
+text.continent-4{
+  fill:#e6ab02;
+}
+
+
+
+
+
+
+
 

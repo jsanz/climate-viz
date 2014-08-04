@@ -7,12 +7,20 @@ title: 2008 Climate visualization
 {% include JB/setup %}
 
 <div class="btn-group btn-group-sm layer-selector-buttons">
-  <button type="button" class="btn btn-default" data-layer="1">Max Temp</button>
-  <button type="button" class="btn btn-default" data-layer="2">Min Temp</button>
-  <button type="button" class="btn btn-default" data-layer="3">Range Temp</button>
-  <button type="button" class="btn btn-default" data-layer="4">Rainy Days</button>
+  <button type="button" class="btn btn-default" data-layer="1"
+  	data-toggle="tooltip" data-placement="bottom"
+  	title="Maximum temperature registered">Max Temp</button>
+  <button type="button" class="btn btn-default" data-layer="2"
+  	data-toggle="tooltip" data-placement="bottom"
+  	title="Minimum temperature registered">Min Temp</button>
+  <button type="button" class="btn btn-default" data-layer="3"
+  	data-toggle="tooltip" data-placement="bottom"
+  	title="Difference between the max. and min. temperatures">Range Temp</button>
+  <button type="button" class="btn btn-default" data-layer="4"
+  	data-toggle="tooltip" data-placement="bottom"
+  	title="Number of rainy days">Rainy Days</button>
 </div>
-<div class="row" id="map"></div>
+<div class="row" id="map" style="height:300px;width:100;"></div>
 
 <div class="row" id="details">
   <div class="col-sm-6 data">
