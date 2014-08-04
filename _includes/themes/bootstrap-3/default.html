@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>{{ page.title }}</title>
     {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+
     <meta name="author" content="{{ site.author.name }}">
 
     <!-- Enable responsive viewport -->
@@ -72,6 +75,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="jb-navbar-collapse">
           <ul id="pages" class="nav navbar-nav">
+            <li><a href="/thunders.html">Thunders</a></li>
             <li><a href="/log/">Log</a></li>
             <li><a href="/about.html">About</a></li>
             <li><a href="/tags.html">Tags</a></li>
@@ -113,11 +117,13 @@
 
     {% include JB/analytics %}
 
-
     <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
     <!-- Placed at the end of the document so the pages load faster -->
+
+    {% unless page.torque %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="{{ ASSET_PATH }}/bootstrap/js/bootstrap.min.js"></script>
+    {% endunless %}
 
     {% if page.frontpage %}
     <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
@@ -125,11 +131,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/dc/1.7.1/dc.js" charset="utf-8"></script>-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js" charset="utf-8"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/chardin.js/0.1.2/chardinjs.js" charset="utf-8"></script>
-
-
-
-
-    <script src="/scripts/main.js" charset="utf-8"></script>
+    <script src="/scripts/main-{{ page.frontpage }}.js" charset="utf-8"></script>
     {% endif %}
 
     {% if page.highlight %}

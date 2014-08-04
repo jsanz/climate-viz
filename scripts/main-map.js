@@ -241,7 +241,7 @@ function main() {
       description: false,
       search: true,
       tiles_loader: true,
-      center_lat: 0,
+      center_lat: 30,
       center_lon: 0,
       zoom: 2,
       //layer_selector:true,
@@ -314,9 +314,6 @@ function main() {
     // you can get the native map to work with it
     // depending if you use google maps or leaflet
     map = vis.getNativeMap();
-
-    // now, perform any operations you need
-    map.setZoom(2).panTo([30,00]);
 
     $('#showHelp').show();
 

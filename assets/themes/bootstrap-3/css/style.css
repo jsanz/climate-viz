@@ -175,7 +175,7 @@ div.cartodb-searchbox{
   height: 33px;
   margin: 17px 14px 0 0;
 }
-div.cartodb-zoom{
+div.cartodb-zoom, div.cartodb-timeslider{
   background: #375a7f;
   border-color: #999999;
 }
@@ -183,3 +183,4 @@ div.cartodb-zoom a.zoom_in{
   /* background: #375a7f; */
   border-color: #999999;
 }
+
