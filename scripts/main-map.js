@@ -114,7 +114,7 @@ var loadD3Table = function(data){
         .text('Rain (count)');
   d3.select('#details table tr')
       .append('th')
-        .text('Tornados (count)');
+        .text('Snow (count)');
   d3.select('#details table tr')
       .append('th')
         .text('Thunders (count)');
@@ -138,7 +138,7 @@ var loadD3Table = function(data){
   tr.append('td')
         .text(function(d){return d.rain_count;});
   tr.append('td')
-        .text(function(d){return d.tornado_co;});
+        .text(function(d){return d.snow_count;});
   tr.append('td')
         .text(function(d){return d.thunder_co;});
 };
@@ -293,9 +293,9 @@ function main() {
         "with stations as ( select station_id id, name from stations where cartodb_id = "
           + data.cartodb_id
           +" ) select stations.name, "
-          + "o.obs_month, o.max_tmp, o.min_tmp, o.tmp, o.rain_count, o.tornado_co, "
+          + "o.obs_month, o.max_tmp, o.min_tmp, o.tmp, o.rain_count, o.snow_count, "
           + "o.thunder_co "
-          + "from observations o, stations where station_id=stations.id order by o.obs_month")
+          + "from observations_month o, stations where station_id=stations.id order by o.obs_month")
         .done(function(data) {
             var parseDate = d3.time.format("%m/%Y").parse;
             //fix the data for the viz
